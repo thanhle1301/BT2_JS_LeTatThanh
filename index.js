@@ -49,14 +49,82 @@ function tinhTienThue() {
   var tongThuNhap = document.getElementById("tong_thu_nhap").value;
   var soNguoiPhuThuoc = document.getElementById("so_nguoi_phu_thuoc").value;
   var tinhTien = "";
-
-  if (tongThuNhap <= 60000000) {
+  if (tongThuNhap <= 0) {
+    tinhTien = 0;
+  } else if (tongThuNhap <= 60000000) {
     tinhTien = (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05;
   } else if (60000000 < tongThuNhap || tongThuNhap <= 120000000) {
     tinhTien =
       (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05 +
       (tongThuNhap - 60000000) * 0.1;
+  } else if (120000000 < tongThuNhap || tongThuNhap <= 210000000) {
+    tinhTien =
+      (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05 +
+      60000000 * 0.1 +
+      (tongThuNhap - 120000000) * 0.15;
+  } else if (210000000 < tongThuNhap || tongThuNhap <= 384000000) {
+    tinhTien =
+      (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05 +
+      60000000 * 0.1 +
+      90000000 * 0.15 +
+      (tongThuNhap - 210000000) * 0.2;
+  } else if (384000000 < tongThuNhap || tongThuNhap <= 624000000) {
+    tinhTien =
+      (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05 +
+      60000000 * 0.1 +
+      90000000 * 0.15 +
+      174000000 * 0.2 +
+      (tongThuNhap - 384000000) * 0.25;
+  } else if (624000000 < tongThuNhap || tongThuNhap <= 960000000) {
+    tinhTien =
+      (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05 +
+      60000000 * 0.1 +
+      90000000 * 0.15 +
+      174000000 * 0.2 +
+      240000000 * 0.25 +
+      (tongThuNhap - 240000000) * 0.3;
+  } else {
+    tinhTien =
+      (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05 +
+      60000000 * 0.1 +
+      90000000 * 0.15 +
+      174000000 * 0.2 +
+      240000000 * 0.25 +
+      336000000 * 0.3 +
+      (tongThuNhap - 960000000) * 0.35;
   }
-  else if ()
-  
+  document.getElementById("tinh_tien_thue").innerHTML =
+    "Họ Tên: " +
+    hoTen2 +
+    ". Số tiền thuế cần phải trả: " +
+    tinhTien.toLocaleString() +
+    " VND";
+}
+
+//////////////////
+// lựa chọn để thêm 1 input khác
+function showInput() {
+  var select = document.getElementById("mySelect").value;
+  var input = document.getElementById("so_ket_noi");
+  if (select == "option1") {
+    input.style.display = "block";
+  } else {
+    input.style.display = "none";
+  }
+}
+
+function tinhTienCap() {
+  var khachHang = document.getElementById("mySelect").value;
+  var soKenhCaoCap = document.getElementById("so_kenh_cao_cap").value;
+  var soKetNoi = document.getElementById("so_ket_noi").value;
+  var maKhachHang = document.getElementById("ma_khach_hang").value;
+
+  var tinhTienCapThue = 0;
+  if (khachHang == "option2") {
+    tinhTienCapThue = 4.5 + 20.5 + 7.5 * soKenhCaoCap;
+  } else if (khachHang == "option1") {
+    tinhTienCapThue = 15 + 75 + 5 * (soKetNoi - 10) + 50 * soKenhCaoCap;
+  }
+  document.getElementById("tinh_tien_cap_thue").innerHTML =
+    "Mã khách hàng: " + maKhachHang + ". Tiền cáp: $" + tinhTienCapThue;
 }
