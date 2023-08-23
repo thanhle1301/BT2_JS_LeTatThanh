@@ -7,27 +7,44 @@ function button_onclick1() {
   var khuVuc = document.getElementById("khu_vuc").value * 1;
   var diemChuan = document.getElementById("diem_chuan").value * 1;
 
-  var tongDiem = diemThu1 + diemThu2 + diemThu3 + doiTuong + khuVuc;
   var ketQua = "";
-  console.log("🚀 ~ button_onclick1 ~ tongDiem:", tongDiem);
 
-  if (tongDiem >= diemChuan) {
-    if (diemThu1 == 0 || diemThu2 == 0 || diemThu3 == 0) {
-      ketQua = "Bạn đã trượt";
-    } else {
-      ketQua = "Bạn đã đậu";
-    }
-  } else {
-    ketQua = "Bạn đã trượt";
+  if (
+    diemThu1 === "" ||
+    diemThu2 === "" ||
+    diemThu3 === "" ||
+    diemChuan === ""
+  ) {
+    alert("Bạn cần điền thông tin đầy đủ");
+    return false;
   }
-  document.getElementById("ket_qua1").innerHTML =
-    ketQua + " . Tổng điểm của bạn là: " + tongDiem;
+
+  var tongDiem = diemThu1 + diemThu2 + diemThu3 + doiTuong + khuVuc;
+
+  if (diemThu1 === 0 || diemThu2 === 0 || diemThu3 === 0) {
+    ketQua = "Bạn đã rớt";
+  } else if (tongDiem >= diemChuan) {
+    ketQua = "Bạn đã đậu";
+  } else {
+    ketQua = "Bạn đã rớt";
+  }
+
+  document.getElementById(
+    "ket_qua1"
+  ).innerHTML = `${ketQua}. Tổng điểm của bạn: ${tongDiem}`;
 }
 //BAI 2
 function tinhTienTra() {
+  //input
   var soKw = document.getElementById("nhap_so_kw").value * 1;
   var hoTen = document.getElementById("nhap_ho_ten").value;
   var tinhTien = "";
+  //điều kiện phải nhập đủ thông tin
+  if (hoTen == "" || soKw == "") {
+    alert("Bạn cần điền thông tin đầy đủ");
+    return false;
+  }
+  //điều kiện : xử lý
   if (soKw <= 50) {
     tinhTien = 500 * soKw;
   } else if (50 < soKw && soKw <= 100) {
@@ -40,66 +57,89 @@ function tinhTienTra() {
     tinhTien =
       50 * 500 + 50 * 650 + 100 * 850 + 150 * 1100 + (soKw - 350) * 1300;
   }
+  //output
   document.getElementById("tinh_tien").innerHTML =
     "Họ tên: " + hoTen + " . Tiền điện: " + tinhTien.toLocaleString() + " VND";
 }
 // BAI 3
 function tinhTienThue() {
+  // input
+  var tongThuNhap = document.getElementById("tongThuNhap").value;
+  var soNguoiPhuThuoc = document.getElementById("soNguoiPhuThuoc").value;
   var hoTen2 = document.getElementById("nhap_ho_ten_2").value;
-  var tongThuNhap = document.getElementById("tong_thu_nhap").value;
-  var soNguoiPhuThuoc = document.getElementById("so_nguoi_phu_thuoc").value;
-  var tinhTien = "";
-  if (tongThuNhap <= 0) {
-    tinhTien = 0;
-  } else if (tongThuNhap <= 60000000) {
-    tinhTien = (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05;
-  } else if (60000000 < tongThuNhap || tongThuNhap <= 120000000) {
-    tinhTien =
-      (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05 +
-      (tongThuNhap - 60000000) * 0.1;
-  } else if (120000000 < tongThuNhap || tongThuNhap <= 210000000) {
-    tinhTien =
-      (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05 +
-      60000000 * 0.1 +
-      (tongThuNhap - 120000000) * 0.15;
-  } else if (210000000 < tongThuNhap || tongThuNhap <= 384000000) {
-    tinhTien =
-      (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05 +
-      60000000 * 0.1 +
-      90000000 * 0.15 +
-      (tongThuNhap - 210000000) * 0.2;
-  } else if (384000000 < tongThuNhap || tongThuNhap <= 624000000) {
-    tinhTien =
-      (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05 +
-      60000000 * 0.1 +
-      90000000 * 0.15 +
-      174000000 * 0.2 +
-      (tongThuNhap - 384000000) * 0.25;
-  } else if (624000000 < tongThuNhap || tongThuNhap <= 960000000) {
-    tinhTien =
-      (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05 +
-      60000000 * 0.1 +
-      90000000 * 0.15 +
-      174000000 * 0.2 +
-      240000000 * 0.25 +
-      (tongThuNhap - 240000000) * 0.3;
-  } else {
-    tinhTien =
-      (tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000) * 0.05 +
-      60000000 * 0.1 +
-      90000000 * 0.15 +
-      174000000 * 0.2 +
-      240000000 * 0.25 +
-      336000000 * 0.3 +
-      (tongThuNhap - 960000000) * 0.35;
+  // điều kiện phải nhập đủ thông tin
+  if (tongThuNhap === "" || soNguoiPhuThuoc === "" || hoTen2 === "") {
+    alert("Bạn cần điền thông tin đầy đủ");
+    return false;
   }
-  document.getElementById("tinh_tien_thue").innerHTML =
-    "Họ Tên: " +
-    hoTen2 +
-    ". Số tiền thuế cần phải trả: " +
-    tinhTien.toLocaleString() +
-    " VND";
+  // input:
+  var thuNhapChiuThue = tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000;
+  var thueSuat = 0;
+
+  // điều kiện để tính
+  if (thuNhapChiuThue <= 60e6) {
+    thueSuat = 0.05;
+  } else if (thuNhapChiuThue <= 120e6) {
+    thueSuat = 0.1;
+  } else if (thuNhapChiuThue <= 210e6) {
+    thueSuat = 0.15;
+  } else if (thuNhapChiuThue <= 384e6) {
+    thueSuat = 0.2;
+  } else if (thuNhapChiuThue <= 624e6) {
+    thueSuat = 0.25;
+  } else if (thuNhapChiuThue <= 960e6) {
+    thueSuat = 0.3;
+  } else {
+    thueSuat = 0.35;
+  }
+  var thueThuNhap = thuNhapChiuThue * thueSuat;
+  // output
+  document.getElementById(
+    "tinh_tien_thue"
+  ).innerHTML = `Họ tên: ${hoTen2}. Thuế thu nhập: ${thueThuNhap.toLocaleString()} VND`;
 }
+
+// function tinhTienThue() {
+//   var tongThuNhap = document.getElementById("tongThuNhap").value;
+//   var soNguoiPhuThuoc = document.getElementById("soNguoiPhuThuoc").value;
+//   var hoTen2 = document.getElementById("nhap_ho_ten_2").value;
+//   if (tongThuNhap === "" || soNguoiPhuThuoc === "" || hoTen2 == "") {
+//     alert("Bạn cần điền thông tin đầy đủ");
+//     return false;
+//   } else {
+//     return thueThuNhap();
+//   }
+// }
+// function thueThuNhap() {
+//   var hoTen2 = document.getElementById("nhap_ho_ten_2").value;
+//   var tongThuNhap = document.getElementById("tongThuNhap").value;
+
+//   var soNguoiPhuThuoc = document.getElementById("soNguoiPhuThuoc").value;
+//   var thuNhapChiuThue = tongThuNhap - 4000000 - soNguoiPhuThuoc * 1600000;
+//   var thueSuat = 0;
+
+//   if (thuNhapChiuThue <= 60e6) {
+//     thueSuat = 0.05;
+//   } else if (thuNhapChiuThue <= 120e6) {
+//     thueSuat = 0.1;
+//   } else if (thuNhapChiuThue <= 210e6) {
+//     thueSuat = 0.15;
+//   } else if (thuNhapChiuThue <= 384e6) {
+//     thueSuat = 0.2;
+//   } else if (thuNhapChiuThue <= 624e6) {
+//     thueSuat = 0.25;
+//   } else if (thuNhapChiuThue <= 960e6) {
+//     thueSuat = 0.3;
+//   } else {
+//     thueSuat = 0.35;
+//   }
+
+//   var thueThuNhap = thuNhapChiuThue * thueSuat;
+
+//   document.getElementById(
+//     "tinh_tien_thue"
+//   ).innerHTML = `Họ tên: ${hoTen2}. Thuế thu nhập: ${thueThuNhap.toLocaleString()} VND`;
+// }
 
 //////////////////
 // lựa chọn để thêm 1 input khác
