@@ -1,3 +1,50 @@
+// ẨN - HIỆN
+
+function btn_onclick_1() {
+  var content_hiden2 = document.getElementById("collapseExample2");
+  var content_hiden3 = document.getElementById("collapseExample3");
+  var content_hiden4 = document.getElementById("collapseExample4");
+
+  var content_dislay = document.getElementById("collapseExample1");
+  content_hiden2.style.display = "none";
+  content_hiden3.style.display = "none";
+  content_hiden4.style.display = "none";
+  content_dislay.style.display = "block";
+}
+
+function btn_onclick_2() {
+  var content_hiden1 = document.getElementById("collapseExample1");
+  var content_hiden3 = document.getElementById("collapseExample3");
+  var content_hiden4 = document.getElementById("collapseExample4");
+  var content_dislay = document.getElementById("collapseExample2");
+  content_hiden1.style.display = "none";
+  content_hiden3.style.display = "none";
+  content_hiden4.style.display = "none";
+  content_dislay.style.display = "block";
+}
+
+function btn_onclick_3() {
+  var content_hiden1 = document.getElementById("collapseExample1");
+  var content_hiden2 = document.getElementById("collapseExample2");
+  var content_hiden4 = document.getElementById("collapseExample4");
+  var content_dislay = document.getElementById("collapseExample2");
+  var content_dislay = document.getElementById("collapseExample3");
+  content_hiden1.style.display = "none";
+  content_hiden2.style.display = "none";
+  content_hiden4.style.display = "none";
+  content_dislay.style.display = "block";
+}
+function btn_onclick_4() {
+  var content_hiden1 = document.getElementById("collapseExample1");
+  var content_hiden2 = document.getElementById("collapseExample2");
+  var content_hiden3 = document.getElementById("collapseExample3");
+  var content_dislay = document.getElementById("collapseExample1");
+  content_hiden1.style.display = "none";
+  content_hiden2.style.display = "none";
+  content_hiden3.style.display = "none";
+  content_dislay.style.display = "block";
+}
+
 // BAI 1
 function button_onclick1() {
   var diemThu1 = document.getElementById("diem_1").value * 1;
