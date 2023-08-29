@@ -27,7 +27,7 @@ function btn_onclick_3() {
   var content_hiden1 = document.getElementById("collapseExample1");
   var content_hiden2 = document.getElementById("collapseExample2");
   var content_hiden4 = document.getElementById("collapseExample4");
-  var content_dislay = document.getElementById("collapseExample2");
+
   var content_dislay = document.getElementById("collapseExample3");
   content_hiden1.style.display = "none";
   content_hiden2.style.display = "none";
@@ -38,7 +38,7 @@ function btn_onclick_4() {
   var content_hiden1 = document.getElementById("collapseExample1");
   var content_hiden2 = document.getElementById("collapseExample2");
   var content_hiden3 = document.getElementById("collapseExample3");
-  var content_dislay = document.getElementById("collapseExample1");
+  var content_dislay = document.getElementById("collapseExample4");
   content_hiden1.style.display = "none";
   content_hiden2.style.display = "none";
   content_hiden3.style.display = "none";
@@ -111,7 +111,7 @@ function tinhTienTra() {
 // BAI 3
 function tinhTienThue() {
   // input
-  var tongThuNhap = document.getElementById("tongThuNhap").value;
+  var tongThuNhap = document.getElementById("tong_thu_nhap").value;
   var soNguoiPhuThuoc = document.getElementById("soNguoiPhuThuoc").value;
   var hoTen2 = document.getElementById("nhap_ho_ten_2").value;
   // điều kiện phải nhập đủ thông tin
